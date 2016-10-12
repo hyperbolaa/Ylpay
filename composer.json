@@ -20,5 +20,9 @@
       "Hyperbolaa\\Ylpay\\": "src/Hyperbolaa/Ylpay/"
     }
   },
-  "minimum-stability": "stable"
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  }
 }
