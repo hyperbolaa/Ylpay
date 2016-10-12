@@ -1,5 +1,6 @@
 {
-  "name": "hyperbolaa/ylpay",
+  "name": "hyperbolaa/Ylpay",
+  "type": "ylpay",
   "description": "银联pos通SDK在Laravel5.2封装包。",
   "keywords": ["L5", "Laravel 5", "Laravel", "yinlian", "yinlian SDK"],
   "license": "MIT",
