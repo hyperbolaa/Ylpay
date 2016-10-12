@@ -1,0 +1,24 @@
+{
+  "name": "hyperbolaa/ylpay",
+  "description": "银联pos通SDK在Laravel5.2封装包。",
+  "keywords": ["L5", "Laravel 5", "Laravel", "yinlian", "yinlian SDK"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "hyperbolaa",
+      "email": "chongyu366@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "5.*",
+    "illuminate/events": "5.*",
+    "illuminate/config": "5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Hyperbolaa\\Ylpay\\": "src/Hyperbolaa/Ylpay/"
+    }
+  },
+  "minimum-stability": "stable"
+}
