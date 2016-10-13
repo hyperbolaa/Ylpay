@@ -1,5 +1,5 @@
 <?php
-namespace Hyperbolaa\Ylapy\Mobile;
+namespace Hyperbolaa\Ylpay\Mobile;
 
 use Hyperbolaa\Ylapy\Lib\Des;
 
