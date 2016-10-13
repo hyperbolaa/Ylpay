@@ -4,7 +4,7 @@ namespace Hyperbolaa\Ylpay;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 
-class AlipayServiceProvider extends ServiceProvider
+class YlpayServiceProvider extends ServiceProvider
 {
 
     /**
