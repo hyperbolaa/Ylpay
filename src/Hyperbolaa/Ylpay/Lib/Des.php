@@ -1,6 +1,6 @@
 <?php
 
-namespace Hyperbolaa\Ylapy\Lib;
+namespace Hyperbolaa\Ylpay\Lib;
 
 class Des
 {

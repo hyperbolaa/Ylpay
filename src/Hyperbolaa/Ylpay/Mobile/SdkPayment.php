@@ -1,7 +1,7 @@
 <?php
 namespace Hyperbolaa\Ylpay\Mobile;
 
-use Hyperbolaa\Ylapy\Lib\Des;
+use Hyperbolaa\Ylpay\Lib\Des;
 
 class SdkPayment
 {
