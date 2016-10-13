@@ -1,6 +1,6 @@
 <?php
 
-namespace Hyperbolaa\Ylapy\Facades;
+namespace Hyperbolaa\Ylpay\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
