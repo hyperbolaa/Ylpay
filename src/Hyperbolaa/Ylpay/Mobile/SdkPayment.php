@@ -198,19 +198,19 @@ class SdkPayment
         //把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
         $prestr = $this->createLinkstring($para_sort);
 
-        $is_sgin = false;
+        $is_sign = false;
         switch (strtoupper(trim($this->sign_type))) {
             case 'MD5':
-                $is_sgin = $this->md5Verify($prestr, $sign, $this->key);
+                $is_sign = $this->md5Verify($prestr, $sign, $this->key);
                 break;
             case 'RSA':
                 $is_sign = Rsa::rsaVerify($prestr, $this->public_key_path, $sign);
                 break;
             default:
-                $is_sgin = false;
+                $is_sign = false;
         }
 
-        return $is_sgin;
+        return $is_sign;
     }
 
     /**
