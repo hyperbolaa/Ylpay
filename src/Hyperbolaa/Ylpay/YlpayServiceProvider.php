@@ -44,6 +44,7 @@ class YlpayServiceProvider extends ServiceProvider
             $alipay = new Mobile\SdkPayment();
             $alipay->setMerchantId($app->config->get('ylpay.merchant_id'))
                 ->setMode($app->config->get('ylpay.mode'))
+                ->setKey($app->config->get('ylpay.key'))
                 ->setSignType($app->config->get('ylpay.sign_type'))
                 ->setPrivateKeyPath($app->config->get('ylpay.private_key_path'))
                 ->setPublicKeyPath($app->config->get('ylpay.public_key_path'))

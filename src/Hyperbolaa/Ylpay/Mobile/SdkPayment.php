@@ -2,6 +2,7 @@
 namespace Hyperbolaa\Ylpay\Mobile;
 
 use Hyperbolaa\Ylpay\Lib\Des;
+use Hyperbolaa\Ylpay\Lib\Rsa;
 
 class SdkPayment
 {
@@ -87,6 +88,12 @@ class SdkPayment
         return $this;
     }
 
+    public function setKey($key)
+    {
+        $this->key = $key;
+        return $this;
+    }
+
     /**
      * 取得支付链接参数
      *
@@ -165,7 +172,7 @@ class SdkPayment
                 $mysign = $this->md5Sign($prestr, $this->key);
                 break;
             case 'RSA':
-                $mysign = $this->rsaSign($prestr, trim($this->private_key_path));
+                $mysign = Rsa::rsaSign($prestr, trim($this->private_key_path));
                 break;
             default:
                 $mysign = '';
@@ -197,7 +204,7 @@ class SdkPayment
                 $is_sgin = $this->md5Verify($prestr, $sign, $this->key);
                 break;
             case 'RSA':
-                $is_sgin = $this->rsaVerify($prestr, $this->public_key_path, $sign);
+                $is_sign = Rsa::rsaVerify($prestr, $this->public_key_path, $sign);
                 break;
             default:
                 $is_sgin = false;
@@ -234,39 +241,6 @@ class SdkPayment
         ksort($para);
         reset($para);
         return $para;
-    }
-
-    /**
-     * RSA验签
-     * @param $data 待签名数据
-     * @param $ali_public_key_path 支付宝的公钥文件路径
-     * @param $sign 要校对的的签名结果
-     * return 验证结果
-     */
-    private function rsaVerify($data, $public_key_path, $sign)
-    {
-        $pubKey = file_get_contents($public_key_path);
-        $res    = openssl_get_publickey($pubKey);
-        $result = (bool) openssl_verify($data, base64_decode($sign), $res);
-        openssl_free_key($res);
-        return $result;
-    }
-
-    /**
-     * RSA签名
-     * @param $data 待签名数据
-     * @param $private_key_path 商户私钥文件路径
-     * return 签名结果
-     */
-    private function rsaSign($data, $private_key_path)
-    {
-        $priKey = file_get_contents($private_key_path);
-        $res    = openssl_get_privatekey($priKey);
-        openssl_sign($data, $sign, $res);
-        openssl_free_key($res);
-        //base64编码
-        $sign = base64_encode($sign);
-        return $sign;
     }
 
     /**
