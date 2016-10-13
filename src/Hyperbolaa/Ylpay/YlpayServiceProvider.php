@@ -46,7 +46,7 @@ class YlpayServiceProvider extends ServiceProvider
                 ->setMode($app->config->get('ylpay.mode'))
                 ->setSignType($app->config->get('ylpay.sign_type'))
                 ->setPrivateKeyPath($app->config->get('ylpay.private_key_path'))
-                ->setPublicKeyPath($app->config->get('lylpay.public_key_path'))
+                ->setPublicKeyPath($app->config->get('ylpay.public_key_path'))
                 ->setNotifyUrl($app->config->get('ylpay.notify_url'));
             return $alipay;
         });
