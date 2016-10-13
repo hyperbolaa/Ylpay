@@ -22,7 +22,7 @@ class YlpayServiceProvider extends ServiceProvider
      */
     protected function setupConfig()
     {
-        $source_config = realpath(__DIR__ . '/config/config.php');
+        $source_config = realpath(__DIR__ . '/../../config/config.php');
 
         if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([
