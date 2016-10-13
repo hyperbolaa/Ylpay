@@ -204,7 +204,7 @@ class SdkPayment
                 $is_sign = $this->md5Verify($prestr, $sign, $this->key);
                 break;
             case 'RSA':
-                $is_sign = Rsa::rsaVerify($prestr, $this->public_key_path, $sign);
+                $is_sign = Rsa::rsaVerify($prestr, $sign, $this->public_key_path);
                 break;
             default:
                 $is_sign = false;
