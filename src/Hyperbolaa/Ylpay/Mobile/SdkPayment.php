@@ -144,7 +144,7 @@ class SdkPayment
         $data = $_POST ?: $_GET;
 
         // 生成签名结果
-        $is_sign = $this->getSignVeryfy($data, $data['sign']);
+        $is_sign = $this->getSignVeryfy($data, $data['signature']);
 
         return $is_sign;
     }
