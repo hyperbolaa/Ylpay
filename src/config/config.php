@@ -26,6 +26,7 @@ return [
     'public_key_path'  => __DIR__ . '/ylkey/public_key.pem',
 
     //wap正式地址
-    'notify_url'       => 'http://wap.kidsclubcn.com/ylpay/notify',
+    //'notify_url'       => 'http://wap.kidsclubcn.com/ylpay/notify',
+    'notify_url'       => 'http://test.kidsclubcn.com/ylpay/notify',
 
 ];
