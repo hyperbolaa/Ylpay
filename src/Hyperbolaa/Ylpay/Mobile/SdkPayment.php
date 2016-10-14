@@ -12,6 +12,10 @@ class SdkPayment
 
     private $public_key_path;
 
+    private $private_key;
+
+    private $public_key;
+
     private $amount; //单位为分
 
     private $mer_order_id;
@@ -73,6 +77,18 @@ class SdkPayment
     public function setPublicKeyPath($public_key_path)
     {
         $this->public_key_path = $public_key_path;
+        return $this;
+    }
+
+    public function setPrivateKey($private_key)
+    {
+        $this->private_key = $private_key;
+        return $this;
+    }
+
+    public function setPublicKey($public_key)
+    {
+        $this->public_key = $public_key;
         return $this;
     }
 
@@ -172,7 +188,7 @@ class SdkPayment
                 $mysign = $this->md5Sign($prestr, $this->key);
                 break;
             case 'RSA':
-                $mysign = Rsa::rsaSign($prestr, trim($this->private_key_path));
+                $mysign = Rsa::rsaSign($prestr, trim($this->private_key));
                 break;
             default:
                 $mysign = '';
@@ -204,7 +220,7 @@ class SdkPayment
                 $is_sign = $this->md5Verify($prestr, $sign, $this->key);
                 break;
             case 'RSA':
-                $is_sign = Rsa::rsaVerify($prestr, $sign, $this->public_key_path);
+                $is_sign = Rsa::rsaVerify($prestr, $sign, $this->public_key);
                 break;
             default:
                 $is_sign = false;
