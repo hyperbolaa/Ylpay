@@ -27,7 +27,8 @@ class Des
         $cipher = MCRYPT_3DES; //指定加密算法
         $modes  = MCRYPT_MODE_ECB; //使用模式
         $iv     = mcrypt_create_iv(mcrypt_get_iv_size($cipher, $modes), MCRYPT_RAND); //初始向量(大小，源)
-        $data   = @mcrypt_decrypt($cipher, $key, $plain_text, $modes, $iv); //使用给定参数解密密文
+        $key    = substr($key,0,24);
+	    $data   = @mcrypt_decrypt($cipher, $key, $plain_text, $modes, $iv); //使用给定参数解密密文
         //         $block = mcrypt_get_block_size($cipher, $modes); //加密算法的分组大小
         $pad       = ord($data[($len = strlen($data)) - 1]); //返回最后一个字符的 ASCII 码值
         $decrypted = substr($data, 0, strlen($data) - $pad); //截取所需
