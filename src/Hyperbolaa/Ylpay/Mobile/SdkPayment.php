@@ -140,12 +140,10 @@ class SdkPayment
         if (empty($_POST) && empty($_GET)) {
             return false;
         }
-
         $data = $_POST ?: $_GET;
 
         // 生成签名结果
-        $is_sign = $this->getSignVeryfy($data, $data['signature']);
-
+	    $is_sign = Rsa::rsaVerify($data['params'], $data['signature'], $this->public_key);
         return $is_sign;
     }
 
@@ -195,38 +193,6 @@ class SdkPayment
         }
 
         return $mysign;
-    }
-
-    /**
-     * 获取返回时的签名验证结果
-     * @param $para_temp 通知返回来的参数数组
-     * @param $sign 返回的签名结果
-     * @return 签名验证结果
-     */
-    public function getSignVeryfy($para_temp, $sign)
-    {
-        //除去待签名参数数组中的空值和签名参数
-        $para_filter = $this->paraFilter($para_temp);
-
-        //对待签名参数数组排序
-        $para_sort = $this->argSort($para_filter);
-
-        //把数组所有元素，按照“参数=参数值”的模式用“&”字符拼接成字符串
-        $prestr = $this->createLinkstring($para_sort);
-
-        $is_sign = false;
-        switch (strtoupper(trim($this->sign_type))) {
-            case 'MD5':
-                $is_sign = $this->md5Verify($prestr, $sign, $this->key);
-                break;
-            case 'RSA':
-                $is_sign = Rsa::rsaVerify($prestr, $sign, $this->public_key);
-                break;
-            default:
-                $is_sign = false;
-        }
-
-        return $is_sign;
     }
 
     /**
