@@ -20,6 +20,8 @@ class SdkPayment
 
     private $mer_order_id;
 
+    private $order_id;
+
     private $merchant_id;
 
     private $merchant_user_id;
@@ -41,6 +43,12 @@ class SdkPayment
     public function setMerOrderId($order_id)
     {
         $this->mer_order_id = $order_id;
+        return $this;
+    }
+
+    public function setOrderId($order_id)
+    {
+        $this->order_id = $order_id;
         return $this;
     }
 
@@ -111,9 +119,9 @@ class SdkPayment
     }
 
     /**
-     * 取得支付链接参数
-     *
-     */
+ * 取得支付链接参数
+ *
+ */
     public function getPayPara()
     {
         $parameter = array(
@@ -127,7 +135,21 @@ class SdkPayment
         );
 
         $para = $this->buildRequestPara($parameter);
+        return $this->createLinkstringUrlencode($para);
+    }
 
+    /**
+     * 取得搜索参数
+     */
+    public function getSearch()
+    {
+        $parameter = array(
+            'merOrderId'     => $this->mer_order_id, //商户订单号
+            'billsMID'       => $this->merchant_id, //商户号
+            'orderId'        => $this->order_id, //商户号
+        );
+
+        $para = $this->buildRequestPara($parameter);
         return $this->createLinkstringUrlencode($para);
     }
 
