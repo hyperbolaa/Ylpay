@@ -1,5 +1,4 @@
-Ylpay   银联POS通支付
-======
+## 银联POS通 & laravel5
 
 支付宝SDK在Laravel5/Lumen封装包。
 
@@ -30,11 +29,6 @@ composer require hyperbolaa/ylpay dev-master
 ### 说明
 配置文件 `config/ylpay.php` 为公共配置信息文件
 
-## 例子
-
-### 支付申请
-
-#### 网页
 
 #### 手机端
 
@@ -50,9 +44,42 @@ composer require hyperbolaa/ylpay dev-master
 	return $ylpay->getPayPara();
 ```
 
-### 结果通知
+### 异步通知
+    public function ylpayNotify()
+    {
+        if (! app('ylpay.mobile')->verify()) {
+            Log::notice('ylpay notify post data verification fail.', [
+                'data' => Request::instance()->getContent()
+            ]);
+            return 'fail';
+        }
 
-#### 网页
+        // 判断通知类型。
+        if (Input::get('respCode') == '00') {
+                // TODO: 支付成功，取得订单号进行其它相关操作。
+                Log::debug('ylpay notify get data verification success.', [
+                    'out_trade_no'  => Input::get('orderId'),
+                    'trade_no'      => Input::get('queryId')
+                ]);
+        }
+
+        return 'success';
+    }
+
+## 联系&打赏 ##
+
+如果真心觉得项目帮助到你，为你节省了成本，欢迎鼓励一下。
+
+如果有什么问题，可通过以下方式联系我。提供有偿技术服务。
+
+也希望更多朋友可用提供代码支持。欢迎交流与大赏。
+
+**邮箱**：yuchong321@126.com
+
+**不错，我要鼓励一下**
+
+![微信](http://onzbviqx3.bkt.clouddn.com/hyperbolaa_wechat.JPG?imageView2/2/w/200/h/300)
+![支付宝](http://onzbviqx3.bkt.clouddn.com/hyperbolaa_alipay.JPG?imageView2/2/w/220/h/260)
 
 
 
