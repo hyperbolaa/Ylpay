@@ -82,4 +82,8 @@ composer require hyperbolaa/ylpay dev-master
 ![支付宝](http://onzbviqx3.bkt.clouddn.com/hyperbolaa_alipay.JPG?imageView2/2/w/220/h/260)
 
 
-
+ ## Related
+ 
+ - [Alipay](https://github.com/hyperbolaa/Alipay)   基于laravel5的支付宝支付
+ - [Unionpay](https://github.com/hyperbolaa/Unionpay)  基于laravel5的银联支付
+ - [Alisms](https://github.com/hyperbolaa/Alisms)  基于laravel5的阿里云短信
